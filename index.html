@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
+      <meta
       name="description"
-      content="Shubham Bhatt is a native mobile engineer building Android and iOS apps where mobile meets hardware, BLE, audio, and real-time communication."
+      content="Shubham Bhatt is a native mobile engineer building Android and iOS apps where mobile meets real devices, BLE, audio, and real-time communication."
     />
     <meta name="theme-color" content="#0a0a0f" />
     <title>Shubham Bhatt | Native Mobile Engineer</title>
@@ -783,6 +783,31 @@
         gap: 10px;
       }
 
+      .project-highlight {
+        display: grid;
+        gap: 6px;
+        padding: 16px;
+        border: 1px solid rgba(245, 158, 11, 0.22);
+        border-radius: 8px;
+        background:
+          linear-gradient(135deg, rgba(245, 158, 11, 0.12), transparent 52%),
+          rgba(255, 255, 255, 0.035);
+      }
+
+      .project-highlight b {
+        color: var(--amber);
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 12px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .project-highlight span {
+        color: #dedfe8;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
       .case-button {
         display: inline-flex;
         min-height: 42px;
@@ -989,6 +1014,7 @@
       }
 
       .research-card,
+      .resume-card,
       .contact-card {
         padding: clamp(26px, 5vw, 44px);
         border: 1px solid var(--border);
@@ -1004,15 +1030,42 @@
       }
 
       .research-card h3,
+      .resume-card h2,
       .contact-card h2 {
         font-size: clamp(30px, 4.5vw, 56px);
         line-height: 1;
       }
 
       .research-card p,
+      .resume-card p,
       .contact-card p {
         color: var(--muted);
         line-height: 1.75;
+      }
+
+      .resume-card {
+        display: grid;
+        grid-template-columns: minmax(0, 0.85fr) minmax(250px, 0.35fr);
+        gap: 28px;
+        align-items: end;
+      }
+
+      .resume-actions {
+        display: grid;
+        gap: 10px;
+      }
+
+      .resume-note {
+        color: var(--quiet);
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      sup {
+        font-size: 0.58em;
+        line-height: 0;
+        vertical-align: super;
       }
 
       .signal-card {
@@ -1220,6 +1273,7 @@
         .story-panel,
         .skills-layout,
         .research-grid,
+        .resume-card,
         .contact-card {
           grid-template-columns: 1fr;
         }
@@ -1370,6 +1424,7 @@
           <a href="#about">About</a>
           <a href="#open-source">Open Source</a>
           <a href="#skills">Skills</a>
+          <a href="#resume">Resume</a>
           <a href="#contact">Contact</a>
         </nav>
       </div>
@@ -1381,7 +1436,7 @@
           <div class="status-pill reveal">Currently exploring audio notching for tinnitus</div>
           <div>
             <p class="eyebrow reveal" style="--delay: 70ms">Android + iOS, robustly native</p>
-            <h1 id="hero-title" class="reveal" style="--delay: 140ms">Where mobile meets hardware.</h1>
+            <h1 id="hero-title" class="reveal" style="--delay: 140ms">Where mobile meets real devices.</h1>
           </div>
           <p class="hero__lead reveal" style="--delay: 210ms">
             I build production mobile systems on both native stacks, co-design the protocols they depend on,
@@ -1418,7 +1473,7 @@
                 <span class="signal"><i></i><i></i><i></i></span>
               </div>
               <div class="device-title">
-                <small>PairHub active</small>
+                <small>PairHub<sup>TM</sup> active</small>
                 <h2>Connected systems, not just screens.</h2>
               </div>
               <div class="telemetry">
@@ -1515,13 +1570,14 @@
                   <span class="tag">WeHear App</span>
                   <span class="tag">Android + iOS</span>
                   <span class="tag">BLE + OTA</span>
+                  <span class="tag">AI notes summary</span>
                   <span class="tag">2023-Present</span>
                 </div>
-                <h3>Wearable companion platform for BLE control, translation, meeting notes, and hearing personalization.</h3>
+                <h3>Wearable companion platform for device control, translation, AI notes summaries, and hearing personalization.</h3>
                 <p>
                   Built production-grade flows across Kotlin and Swift: OTA firmware updates, 100+ language live
-                  translation over WebSockets, AI-powered summaries, adaptive EQ through GATT writes, PairHub multi-device
-                  switching, and encrypted health and conversation data.
+                  translation over WebSockets, AI-powered meeting notes and summaries, adaptive EQ through GATT writes,
+                  PairHub<sup>TM</sup> multi-device switching, and encrypted health and conversation data.
                 </p>
               </div>
               <div class="project-card__bottom">
@@ -1542,6 +1598,13 @@
                     <strong><span data-counter data-target="55" data-prefix="-" data-suffix="%">0</span></strong>
                     <span>Device switch latency</span>
                   </div>
+                </div>
+                <div class="project-highlight">
+                  <b>AI notes summary</b>
+                  <span>
+                    Converts live conversations and meetings into structured notes and summaries, so the wearable app
+                    becomes useful after the conversation ends too.
+                  </span>
                 </div>
                 <div class="project-actions">
                   <button class="case-button" type="button" data-open-dialog="wehear-dialog">Open case study</button>
@@ -1781,6 +1844,26 @@
         </div>
       </section>
 
+      <section id="resume">
+        <div class="shell">
+          <div class="resume-card reveal">
+            <div>
+              <p class="eyebrow">Resume</p>
+              <h2>Download the mobile engineering resume.</h2>
+              <p>
+                A concise PDF version of the same story: native Android and iOS work, BLE wearable systems,
+                real-time communication, architecture, and open source contributions.
+              </p>
+            </div>
+            <div class="resume-actions">
+              <a class="button button--primary" href="assets/shubham_mobile_resume.pdf" download>Download resume</a>
+              <a class="button" href="assets/shubham_mobile_resume.pdf" target="_blank" rel="noreferrer">Open PDF</a>
+              <span class="resume-note">PDF: shubham_mobile_resume.pdf</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="contact" class="contact">
         <div class="shell">
           <div class="contact-card reveal">
@@ -1821,9 +1904,9 @@
         </div>
         <div class="modal__body">
           <p>
-            Production wearable companion platform spanning BLE device control, OTA firmware updates, real-time
-            translation, AI-powered meeting notes, hearing-test-driven adaptive EQ, encrypted data, and intelligent
-            multi-device switching.
+            Production wearable companion platform spanning device control, OTA firmware updates, real-time
+            translation, AI-powered meeting notes and summaries, hearing-test-driven adaptive EQ, encrypted data, and
+            intelligent multi-device switching.
           </p>
           <div class="modal-grid">
             <div class="modal-block">
@@ -1831,8 +1914,9 @@
               <ul>
                 <li>Real-time BLE device control and firmware update recovery.</li>
                 <li>100+ language live translation over WebSockets with sub-2s target latency.</li>
+                <li>AI-powered meeting notes and summaries for post-conversation recall.</li>
                 <li>Personal Fit adaptive EQ through GATT characteristic writes.</li>
-                <li>PairHub support for up to 4 simultaneously paired wearables.</li>
+                <li>PairHub<sup>TM</sup> support for up to 4 simultaneously paired wearables.</li>
               </ul>
             </div>
             <div class="modal-block">

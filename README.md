@@ -18,6 +18,7 @@ http://localhost:5173/
 
 - V1 Editorial / Refined: `http://localhost:5173/`
 - V2 Mobile-Native: `http://localhost:5173/mobile-native.html`
+- Resume PDF: `http://localhost:5173/assets/shubham_mobile_resume.pdf`
 
 ## Notes
 
