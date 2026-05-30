@@ -1,0 +1,1700 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A mobile-native portfolio experience for Shubham Bhatt, native Android and iOS engineer building BLE wearable, audio, and real-time communication systems."
+    />
+    <meta name="theme-color" content="#090910" />
+    <title>Shubham Bhatt | Mobile-Native Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #090910;
+        --bg2: #10111a;
+        --phone: #050508;
+        --screen: #0d0d14;
+        --glass: rgba(255, 255, 255, 0.075);
+        --glass-strong: rgba(255, 255, 255, 0.115);
+        --border: rgba(255, 255, 255, 0.11);
+        --border-strong: rgba(255, 255, 255, 0.2);
+        --text: #f5f5f7;
+        --muted: #a4a5b4;
+        --quiet: #717383;
+        --blue: #3b82f6;
+        --violet: #766bff;
+        --amber: #f59e0b;
+        --green: #52d68f;
+        --red: #ff6b6b;
+        --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        --shadow: 0 34px 110px rgba(0, 0, 0, 0.48);
+        color-scheme: dark;
+      }
+
+      * {
+        box-sizing: border-box;
+        min-width: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 18% 14%, rgba(59, 130, 246, 0.26), transparent 32rem),
+          radial-gradient(circle at 82% 10%, rgba(245, 158, 11, 0.15), transparent 27rem),
+          radial-gradient(circle at 58% 96%, rgba(118, 107, 255, 0.17), transparent 31rem),
+          linear-gradient(135deg, #06060a 0%, var(--bg) 48%, #10111a 100%);
+        color: var(--text);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        letter-spacing: 0;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        content: "";
+        opacity: 0.36;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.024) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.024) 1px, transparent 1px);
+        background-size: 42px 42px;
+        mask-image: linear-gradient(to bottom, black, transparent 88%);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        border: 0;
+        color: inherit;
+        font: inherit;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+        overflow-wrap: break-word;
+      }
+
+      .skip-link {
+        position: fixed;
+        top: 12px;
+        left: 12px;
+        z-index: 100;
+        padding: 10px 14px;
+        border-radius: 8px;
+        background: var(--text);
+        color: var(--bg);
+        transform: translateY(-160%);
+        transition: transform 180ms var(--ease);
+      }
+
+      .skip-link:focus {
+        transform: translateY(0);
+      }
+
+      .experience {
+        display: grid;
+        width: min(100% - 32px, 1220px);
+        min-height: 100vh;
+        margin: 0 auto;
+        grid-template-columns: minmax(320px, 0.9fr) minmax(360px, 430px);
+        gap: clamp(28px, 5vw, 74px);
+        align-items: center;
+        padding: clamp(28px, 5vw, 62px) 0;
+      }
+
+      .copy-rail {
+        display: grid;
+        gap: 26px;
+      }
+
+      .version-link {
+        display: inline-flex;
+        width: fit-content;
+        align-items: center;
+        gap: 10px;
+        padding: 9px 12px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.045);
+        color: var(--muted);
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .version-link::before {
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: var(--green);
+        box-shadow: 0 0 18px rgba(82, 214, 143, 0.7);
+        content: "";
+      }
+
+      .copy-rail h1 {
+        max-width: 760px;
+        font-size: clamp(48px, 7vw, 92px);
+        line-height: 0.94;
+      }
+
+      .copy-rail p {
+        max-width: 700px;
+        color: #d8d9e1;
+        font-size: clamp(18px, 2.2vw, 24px);
+        line-height: 1.5;
+      }
+
+      .copy-rail strong {
+        color: var(--text);
+      }
+
+      .rail-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .action {
+        display: inline-flex;
+        min-height: 46px;
+        align-items: center;
+        justify-content: center;
+        padding: 0 16px;
+        border: 1px solid var(--border-strong);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text);
+        cursor: pointer;
+        font-weight: 800;
+        transition: transform 220ms var(--ease), background 220ms var(--ease), border-color 220ms var(--ease);
+      }
+
+      .action:hover {
+        transform: translateY(-2px);
+        border-color: rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .action--primary {
+        border-color: rgba(59, 130, 246, 0.48);
+        background: linear-gradient(135deg, var(--blue), var(--violet));
+      }
+
+      .rail-metrics {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        max-width: 760px;
+      }
+
+      .rail-metric {
+        display: grid;
+        gap: 8px;
+        padding: 16px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.045);
+        backdrop-filter: blur(18px);
+      }
+
+      .rail-metric b {
+        color: var(--amber);
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 22px;
+      }
+
+      .rail-metric span {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .phone-stage {
+        position: relative;
+        display: grid;
+        place-items: center;
+      }
+
+      .phone-shadow {
+        position: absolute;
+        inset: auto 10% -18px;
+        height: 42px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.56);
+        filter: blur(18px);
+      }
+
+      .phone {
+        position: relative;
+        width: min(100%, 430px);
+        height: min(860px, calc(100vh - 46px));
+        min-height: 720px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 46px;
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.16), transparent 17%),
+          linear-gradient(315deg, rgba(255, 255, 255, 0.08), transparent 14%),
+          var(--phone);
+        box-shadow: var(--shadow);
+        padding: 13px;
+      }
+
+      .phone::before {
+        position: absolute;
+        inset: 9px;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 38px;
+        pointer-events: none;
+        content: "";
+      }
+
+      .screen {
+        position: relative;
+        display: grid;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 35px;
+        background:
+          radial-gradient(circle at 50% 10%, rgba(59, 130, 246, 0.18), transparent 18rem),
+          radial-gradient(circle at 20% 92%, rgba(245, 158, 11, 0.1), transparent 18rem),
+          linear-gradient(180deg, #10111a, #090910 58%, #050507);
+      }
+
+      .status-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 54px;
+        padding: 14px 28px 0;
+        color: rgba(255, 255, 255, 0.74);
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 11px;
+        pointer-events: none;
+      }
+
+      .status-icons {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .signal {
+        display: flex;
+        align-items: end;
+        gap: 2px;
+      }
+
+      .signal i {
+        display: block;
+        width: 4px;
+        border-radius: 99px;
+        background: rgba(255, 255, 255, 0.7);
+      }
+
+      .signal i:nth-child(1) {
+        height: 5px;
+      }
+
+      .signal i:nth-child(2) {
+        height: 8px;
+      }
+
+      .signal i:nth-child(3) {
+        height: 12px;
+        background: var(--blue);
+      }
+
+      .battery {
+        width: 22px;
+        height: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        border-radius: 3px;
+        padding: 1px;
+      }
+
+      .battery::before {
+        display: block;
+        width: 76%;
+        height: 100%;
+        border-radius: 2px;
+        background: var(--green);
+        content: "";
+      }
+
+      .island {
+        position: absolute;
+        top: 14px;
+        left: 50%;
+        z-index: 30;
+        display: grid;
+        width: 174px;
+        min-height: 34px;
+        place-items: center;
+        padding: 0 14px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.78);
+        color: rgba(255, 255, 255, 0.72);
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 10px;
+        transform: translateX(-50%);
+        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.34);
+        transition: width 320ms var(--ease), background 320ms var(--ease);
+      }
+
+      .island.is-expanded {
+        width: 265px;
+        background: rgba(0, 0, 0, 0.88);
+      }
+
+      .screens {
+        position: relative;
+        height: 100%;
+      }
+
+      .app-screen {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        grid-template-rows: 1fr auto;
+        padding: 70px 18px 16px;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateX(42px) scale(0.985);
+        visibility: hidden;
+        transition: opacity 360ms var(--ease), transform 520ms var(--ease);
+      }
+
+      .app-screen.is-active {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(0) scale(1);
+        visibility: visible;
+      }
+
+      .screen-scroll {
+        min-height: 0;
+        overflow-y: auto;
+        padding: 0 2px 14px;
+        scrollbar-width: none;
+      }
+
+      .screen-scroll::-webkit-scrollbar {
+        display: none;
+      }
+
+      .dock {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 7px;
+        padding: 9px;
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 16px 44px rgba(0, 0, 0, 0.34);
+        backdrop-filter: blur(24px);
+      }
+
+      .dock button {
+        display: grid;
+        min-height: 52px;
+        place-items: center;
+        gap: 3px;
+        border-radius: 17px;
+        background: rgba(255, 255, 255, 0.055);
+        color: var(--muted);
+        cursor: pointer;
+        font-size: 10px;
+        font-weight: 800;
+        transition: transform 220ms var(--ease), background 220ms var(--ease), color 220ms var(--ease);
+      }
+
+      .dock button:hover,
+      .dock button.is-active {
+        transform: translateY(-3px);
+        background: rgba(255, 255, 255, 0.14);
+        color: var(--text);
+      }
+
+      .dock i,
+      .app-icon i {
+        display: grid;
+        place-items: center;
+        width: 27px;
+        height: 27px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--icon-a, var(--blue)), var(--icon-b, var(--violet)));
+        color: white;
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 900;
+      }
+
+      .lock-screen {
+        padding-top: 86px;
+        text-align: center;
+      }
+
+      .lock-time {
+        color: rgba(255, 255, 255, 0.94);
+        font-size: clamp(68px, 18vw, 96px);
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        line-height: 0.9;
+      }
+
+      .lock-date {
+        margin-top: 10px;
+        color: rgba(255, 255, 255, 0.72);
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 12px;
+      }
+
+      .notification-stack {
+        display: grid;
+        gap: 12px;
+        margin-top: 42px;
+        text-align: left;
+      }
+
+      .notification {
+        display: grid;
+        gap: 9px;
+        padding: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(22px);
+      }
+
+      .notification small {
+        color: rgba(255, 255, 255, 0.62);
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 10px;
+      }
+
+      .notification b {
+        font-size: 17px;
+      }
+
+      .notification p {
+        color: #d9dbe6;
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .unlock {
+        display: grid;
+        gap: 12px;
+        margin-top: 30px;
+        justify-items: center;
+      }
+
+      .unlock button {
+        display: flex;
+        width: 100%;
+        max-width: 260px;
+        min-height: 48px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.12);
+        color: var(--text);
+        cursor: pointer;
+        font-weight: 900;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+      }
+
+      .unlock span {
+        color: var(--quiet);
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 10px;
+      }
+
+      .home-head {
+        display: grid;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .home-head small,
+      .section-label {
+        color: var(--amber);
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .home-head h2 {
+        font-size: 34px;
+        line-height: 0.98;
+      }
+
+      .home-head p,
+      .app-card p,
+      .system-card p,
+      .message p {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .app-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px 11px;
+        margin-bottom: 18px;
+      }
+
+      .app-icon {
+        display: grid;
+        justify-items: center;
+        gap: 7px;
+        border-radius: 18px;
+        background: transparent;
+        color: var(--text);
+        cursor: pointer;
+      }
+
+      .app-icon i {
+        width: 58px;
+        height: 58px;
+        border-radius: 16px;
+        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.26);
+        font-size: 16px;
+      }
+
+      .app-icon span {
+        width: 100%;
+        color: #dddfea;
+        font-size: 11px;
+        font-weight: 800;
+        line-height: 1.15;
+        text-align: center;
+      }
+
+      .widgets {
+        display: grid;
+        gap: 10px;
+      }
+
+      .widget {
+        display: grid;
+        gap: 12px;
+        padding: 15px;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.075);
+        backdrop-filter: blur(18px);
+      }
+
+      .widget-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+      }
+
+      .widget b {
+        font-size: 15px;
+      }
+
+      .widget small {
+        color: var(--muted);
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 10px;
+      }
+
+      .mini-bars {
+        display: grid;
+        gap: 8px;
+      }
+
+      .mini-bar {
+        display: grid;
+        grid-template-columns: 76px 1fr auto;
+        align-items: center;
+        gap: 8px;
+        color: var(--muted);
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 10px;
+      }
+
+      .mini-bar i {
+        display: block;
+        height: 6px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .mini-bar i::before {
+        display: block;
+        width: var(--value);
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, var(--blue), var(--amber));
+        content: "";
+      }
+
+      .screen-title {
+        display: flex;
+        align-items: start;
+        gap: 12px;
+        margin-bottom: 18px;
+      }
+
+      .back {
+        display: grid;
+        flex: 0 0 auto;
+        width: 36px;
+        height: 36px;
+        place-items: center;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text);
+        cursor: pointer;
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-weight: 900;
+      }
+
+      .screen-title h2 {
+        margin-top: 6px;
+        font-size: 29px;
+        line-height: 1;
+      }
+
+      .app-card,
+      .system-card,
+      .pr-card,
+      .message,
+      .detail-hero {
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.075);
+        backdrop-filter: blur(18px);
+      }
+
+      .detail-hero {
+        display: grid;
+        gap: 14px;
+        padding: 18px;
+        background:
+          linear-gradient(135deg, rgba(59, 130, 246, 0.18), transparent 42%),
+          rgba(255, 255, 255, 0.075);
+      }
+
+      .detail-hero h3 {
+        font-size: 27px;
+        line-height: 1.03;
+      }
+
+      .detail-hero p {
+        color: #dadde7;
+        font-size: 14px;
+        line-height: 1.58;
+      }
+
+      .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+        margin: 12px 0;
+      }
+
+      .stat {
+        display: grid;
+        gap: 6px;
+        min-height: 82px;
+        padding: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 16px;
+        background: rgba(0, 0, 0, 0.17);
+      }
+
+      .stat b {
+        color: var(--amber);
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 20px;
+      }
+
+      .stat span {
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.35;
+      }
+
+      .stack-list,
+      .feature-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .feature-list div {
+        padding: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.075);
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.045);
+        color: #dfe1ea;
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+
+      .chip {
+        display: inline-flex;
+        min-height: 26px;
+        align-items: center;
+        padding: 0 9px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.055);
+        color: var(--muted);
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 10px;
+        font-weight: 800;
+      }
+
+      .about-stack,
+      .oss-stack,
+      .contact-stack,
+      .skills-stack {
+        display: grid;
+        gap: 12px;
+      }
+
+      .system-card {
+        display: grid;
+        gap: 12px;
+        padding: 16px;
+      }
+
+      .system-card h3 {
+        font-size: 20px;
+      }
+
+      .system-card b {
+        color: var(--text);
+      }
+
+      .toggle-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+      }
+
+      .toggle {
+        display: grid;
+        gap: 10px;
+        padding: 13px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      .toggle-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .switch {
+        position: relative;
+        width: 38px;
+        height: 22px;
+        flex: 0 0 auto;
+        border-radius: 999px;
+        background: rgba(59, 130, 246, 0.65);
+      }
+
+      .switch::after {
+        position: absolute;
+        top: 3px;
+        right: 3px;
+        width: 16px;
+        height: 16px;
+        border-radius: 999px;
+        background: white;
+        content: "";
+      }
+
+      .toggle b {
+        font-size: 13px;
+      }
+
+      .toggle p {
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.45;
+      }
+
+      .pr-card {
+        display: grid;
+        gap: 13px;
+        padding: 15px;
+      }
+
+      .pr-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .repo {
+        display: grid;
+        gap: 4px;
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+      }
+
+      .repo small {
+        color: var(--quiet);
+        font-size: 10px;
+      }
+
+      .repo b {
+        font-size: 12px;
+      }
+
+      .status {
+        display: inline-flex;
+        height: 24px;
+        align-items: center;
+        padding: 0 8px;
+        border-radius: 999px;
+        background: rgba(59, 130, 246, 0.14);
+        color: #a7cbff;
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 9px;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+
+      .status--approved {
+        background: rgba(82, 214, 143, 0.13);
+        color: #9bf2bd;
+      }
+
+      .pr-card h3 {
+        font-size: 18px;
+        line-height: 1.18;
+        overflow-wrap: anywhere;
+      }
+
+      .pr-card p {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .arrow-link {
+        color: var(--amber);
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 11px;
+        font-weight: 900;
+      }
+
+      .message-thread {
+        display: grid;
+        gap: 12px;
+      }
+
+      .message {
+        display: grid;
+        gap: 8px;
+        max-width: 88%;
+        padding: 13px;
+      }
+
+      .message--me {
+        justify-self: end;
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.76), rgba(118, 107, 255, 0.72));
+      }
+
+      .message--me p {
+        color: white;
+      }
+
+      .message small {
+        color: rgba(255, 255, 255, 0.58);
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 10px;
+      }
+
+      .contact-actions {
+        display: grid;
+        gap: 9px;
+        margin-top: 12px;
+      }
+
+      .contact-actions a {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        min-height: 44px;
+        align-items: center;
+        padding: 0 13px;
+        border: 1px solid var(--border);
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.075);
+        font-size: 13px;
+        font-weight: 900;
+      }
+
+      .contact-actions span {
+        color: var(--muted);
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 10px;
+        overflow-wrap: anywhere;
+        text-align: right;
+      }
+
+      .home-indicator {
+        position: absolute;
+        left: 50%;
+        bottom: 7px;
+        z-index: 25;
+        width: 132px;
+        height: 4px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.44);
+        transform: translateX(-50%);
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      @media (max-width: 980px) {
+        .experience {
+          grid-template-columns: 1fr;
+          justify-items: center;
+          padding-top: 28px;
+        }
+
+        .copy-rail {
+          width: min(100%, 700px);
+          text-align: left;
+        }
+
+        .phone-stage {
+          width: min(100%, 430px);
+          order: -1;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .experience {
+          width: min(100% - 18px, 430px);
+          gap: 22px;
+          padding: 12px 0 28px;
+        }
+
+        .copy-rail {
+          gap: 16px;
+          padding: 6px 2px 0;
+        }
+
+        .copy-rail h1 {
+          font-size: clamp(34px, 11vw, 48px);
+        }
+
+        .copy-rail p {
+          font-size: 16px;
+        }
+
+        .rail-metrics {
+          grid-template-columns: 1fr;
+        }
+
+        .phone {
+          width: 100%;
+          height: 780px;
+          min-height: 700px;
+          padding: 9px;
+          border-radius: 38px;
+        }
+
+        .screen {
+          border-radius: 30px;
+        }
+
+        .status-bar {
+          padding-inline: 22px;
+        }
+
+        .app-screen {
+          padding: 68px 14px 14px;
+        }
+
+        .app-grid {
+          gap: 14px 7px;
+        }
+
+        .app-icon i {
+          width: 52px;
+          height: 52px;
+        }
+
+        .dock {
+          gap: 5px;
+          padding: 7px;
+        }
+
+        .dock button {
+          min-height: 47px;
+          font-size: 9px;
+        }
+
+        .dock i {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+
+        .app-screen {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#portfolio-app">Skip to mobile portfolio</a>
+
+    <main class="experience">
+      <section class="copy-rail" aria-labelledby="page-title">
+        <a class="version-link" href="index.html">V1 editorial is preserved here</a>
+        <h1 id="page-title">A portfolio that behaves like a native app.</h1>
+        <p>
+          This second concept turns the site into a phone-like experience: unlock it, tap project apps, move through
+          detail views, check the control center, and start a conversation. Same Shubham context, different signature.
+        </p>
+        <p>
+          The point is immediate: <strong>I think in mobile systems, not web templates.</strong>
+        </p>
+        <div class="rail-actions">
+          <button class="action action--primary" type="button" data-rail-action="unlock">Unlock portfolio</button>
+          <a class="action" href="mailto:shubham.work2002@gmail.com">Let's chat</a>
+        </div>
+        <div class="rail-metrics" aria-label="Highlights">
+          <div class="rail-metric">
+            <b>98.5%</b>
+            <span>OTA success after rebuilding update reliability.</span>
+          </div>
+          <div class="rail-metric">
+            <b>3,000+</b>
+            <span>BNI Hawaii participants served with live translated audio.</span>
+          </div>
+          <div class="rail-metric">
+            <b>42+</b>
+            <span>BLE command types co-designed with firmware teams.</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio-app" class="phone-stage" aria-label="Mobile-native portfolio experience">
+        <div class="phone-shadow" aria-hidden="true"></div>
+        <div class="phone" data-phone>
+          <div class="screen">
+            <div class="status-bar" aria-hidden="true">
+              <span>15:42</span>
+              <span class="status-icons">
+                <span class="signal"><i></i><i></i><i></i></span>
+                <span>5G</span>
+                <span class="battery"></span>
+              </span>
+            </div>
+            <div class="island" data-island>Exploring audio notching</div>
+
+            <div class="screens">
+              <section class="app-screen lock-screen is-active" data-screen="lock" aria-labelledby="lock-title">
+                <div class="screen-scroll">
+                  <div class="lock-time">SB</div>
+                  <p class="lock-date">Native Android + iOS engineer</p>
+
+                  <div class="notification-stack">
+                    <div class="notification">
+                      <small>Now playing: Shubham Bhatt</small>
+                      <b>Where mobile meets hardware.</b>
+                      <p>I build the app, question the protocol, and ship the result.</p>
+                    </div>
+                    <div class="notification">
+                      <small>Currently</small>
+                      <b>Audio notching for tinnitus</b>
+                      <p>Researching mobile audio, notch filters, and hearing-focused signal processing.</p>
+                    </div>
+                  </div>
+
+                  <div class="unlock">
+                    <button type="button" data-show-screen="home" id="lock-title">Slide to explore</button>
+                    <span>Tap projects like app icons</span>
+                  </div>
+                </div>
+                <div class="dock" aria-label="Locked quick actions">
+                  <button type="button" data-show-screen="home"><i>HM</i>Home</button>
+                  <button type="button" data-open-project="wehear"><i>WH</i>Work</button>
+                  <button type="button" data-show-screen="about"><i>AB</i>About</button>
+                  <button type="button" data-show-screen="oss"><i>OS</i>OSS</button>
+                  <button type="button" data-show-screen="contact"><i>CH</i>Chat</button>
+                </div>
+              </section>
+
+              <section class="app-screen" data-screen="home" aria-labelledby="home-title">
+                <div class="screen-scroll">
+                  <div class="home-head">
+                    <small>Home screen</small>
+                    <h2 id="home-title">Native. Both stacks. No shortcuts.</h2>
+                    <p>
+                      Choose a project app. Each one opens like a mobile detail view with impact, architecture, and
+                      system constraints up front.
+                    </p>
+                  </div>
+
+                  <div class="app-grid" aria-label="Project apps">
+                    <button class="app-icon" type="button" data-open-project="wehear" style="--icon-a: #3b82f6; --icon-b: #766bff">
+                      <i>WH</i>
+                      <span>WeHear</span>
+                    </button>
+                    <button class="app-icon" type="button" data-open-project="weconverse" style="--icon-a: #f59e0b; --icon-b: #ef4444">
+                      <i>WC</i>
+                      <span>WeConverse</span>
+                    </button>
+                    <button class="app-icon" type="button" data-open-project="nuconnect" style="--icon-a: #52d68f; --icon-b: #3b82f6">
+                      <i>NC</i>
+                      <span>NuConnect</span>
+                    </button>
+                    <button class="app-icon" type="button" data-show-screen="research" style="--icon-a: #766bff; --icon-b: #f59e0b">
+                      <i>RS</i>
+                      <span>Research</span>
+                    </button>
+                    <button class="app-icon" type="button" data-show-screen="skills" style="--icon-a: #111827; --icon-b: #3b82f6">
+                      <i>CC</i>
+                      <span>Control</span>
+                    </button>
+                    <button class="app-icon" type="button" data-show-screen="oss" style="--icon-a: #171717; --icon-b: #52525b">
+                      <i>GH</i>
+                      <span>Open Source</span>
+                    </button>
+                    <button class="app-icon" type="button" data-show-screen="about" style="--icon-a: #0ea5e9; --icon-b: #22c55e">
+                      <i>ME</i>
+                      <span>About</span>
+                    </button>
+                    <button class="app-icon" type="button" data-show-screen="contact" style="--icon-a: #22c55e; --icon-b: #3b82f6">
+                      <i>DM</i>
+                      <span>Message</span>
+                    </button>
+                  </div>
+
+                  <div class="widgets">
+                    <div class="widget">
+                      <div class="widget-row">
+                        <b>Live system metrics</b>
+                        <small>WeHear</small>
+                      </div>
+                      <div class="mini-bars">
+                        <div class="mini-bar"><span>OTA</span><i style="--value: 98.5%"></i><span>98.5%</span></div>
+                        <div class="mini-bar"><span>ANR</span><i style="--value: 70%"></i><span>-70%</span></div>
+                        <div class="mini-bar"><span>Switch</span><i style="--value: 55%"></i><span>-55%</span></div>
+                      </div>
+                    </div>
+                    <div class="widget">
+                      <div class="widget-row">
+                        <b>Dynamic Island</b>
+                        <small>Latest signal</small>
+                      </div>
+                      <p>
+                        detekt PR #9334 is approved and open. Now in Android PR #2120 is open.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="dock" aria-label="Primary app navigation">
+                  <button type="button" class="is-active" data-show-screen="home"><i>HM</i>Home</button>
+                  <button type="button" data-open-project="wehear"><i>WH</i>Work</button>
+                  <button type="button" data-show-screen="about"><i>AB</i>About</button>
+                  <button type="button" data-show-screen="oss"><i>OS</i>OSS</button>
+                  <button type="button" data-show-screen="contact"><i>CH</i>Chat</button>
+                </div>
+              </section>
+
+              <section class="app-screen" data-screen="detail" aria-labelledby="detail-title">
+                <div class="screen-scroll">
+                  <div class="screen-title">
+                    <button class="back" type="button" data-show-screen="home" aria-label="Back to home">&lt;</button>
+                    <div>
+                      <span class="section-label" data-detail-role>Project</span>
+                      <h2 id="detail-title" data-detail-title>Project</h2>
+                    </div>
+                  </div>
+
+                  <article class="detail-hero">
+                    <div class="chips" data-detail-tags></div>
+                    <h3 data-detail-headline></h3>
+                    <p data-detail-copy></p>
+                  </article>
+
+                  <div class="stat-grid" data-detail-stats></div>
+
+                  <div class="system-card">
+                    <h3>What I shipped</h3>
+                    <div class="feature-list" data-detail-features></div>
+                  </div>
+
+                  <div class="system-card">
+                    <h3>Native stack</h3>
+                    <div class="chips" data-detail-stack></div>
+                  </div>
+                </div>
+                <div class="dock" aria-label="Project detail navigation">
+                  <button type="button" data-show-screen="home"><i>HM</i>Home</button>
+                  <button type="button" class="is-active" data-open-project="wehear"><i>WH</i>Work</button>
+                  <button type="button" data-show-screen="about"><i>AB</i>About</button>
+                  <button type="button" data-show-screen="oss"><i>OS</i>OSS</button>
+                  <button type="button" data-show-screen="contact"><i>CH</i>Chat</button>
+                </div>
+              </section>
+
+              <section class="app-screen" data-screen="about" aria-labelledby="about-title">
+                <div class="screen-scroll">
+                  <div class="screen-title">
+                    <button class="back" type="button" data-show-screen="home" aria-label="Back to home">&lt;</button>
+                    <div>
+                      <span class="section-label">Profile</span>
+                      <h2 id="about-title">I build close to the device.</h2>
+                    </div>
+                  </div>
+                  <div class="about-stack">
+                    <div class="system-card">
+                      <h3>Short version</h3>
+                      <p>
+                        I build for both native stacks, question everything, and shipped a real-time translation system
+                        to 3,000 people at a Hawaii convention.
+                      </p>
+                    </div>
+                    <div class="system-card">
+                      <h3>How I work</h3>
+                      <p>
+                        I care about the layer where product intent meets Bluetooth behavior, firmware constraints,
+                        audio delivery, background execution, and real user recovery states.
+                      </p>
+                    </div>
+                    <div class="system-card">
+                      <h3>Firmware collaboration</h3>
+                      <p>
+                        Went on-site in China to co-design BLE protocols across 5+ firmware versions and define 42+
+                        command types with firmware engineers.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="dock" aria-label="About navigation">
+                  <button type="button" data-show-screen="home"><i>HM</i>Home</button>
+                  <button type="button" data-open-project="wehear"><i>WH</i>Work</button>
+                  <button type="button" class="is-active" data-show-screen="about"><i>AB</i>About</button>
+                  <button type="button" data-show-screen="oss"><i>OS</i>OSS</button>
+                  <button type="button" data-show-screen="contact"><i>CH</i>Chat</button>
+                </div>
+              </section>
+
+              <section class="app-screen" data-screen="skills" aria-labelledby="skills-title">
+                <div class="screen-scroll">
+                  <div class="screen-title">
+                    <button class="back" type="button" data-show-screen="home" aria-label="Back to home">&lt;</button>
+                    <div>
+                      <span class="section-label">Control Center</span>
+                      <h2 id="skills-title">Native systems online.</h2>
+                    </div>
+                  </div>
+                  <div class="skills-stack">
+                    <div class="toggle-grid">
+                      <div class="toggle">
+                        <div class="toggle-top"><b>Android</b><span class="switch"></span></div>
+                        <p>Kotlin, Coroutines, Flow, Compose, Hilt, Room, WorkManager.</p>
+                      </div>
+                      <div class="toggle">
+                        <div class="toggle-top"><b>iOS</b><span class="switch"></span></div>
+                        <p>Swift, SwiftUI, iOS 17+ Observable, Combine, SwiftData, Live Activities.</p>
+                      </div>
+                      <div class="toggle">
+                        <div class="toggle-top"><b>BLE</b><span class="switch"></span></div>
+                        <p>GATT writes, OTA, command acknowledgment, multi-device switching.</p>
+                      </div>
+                      <div class="toggle">
+                        <div class="toggle-top"><b>Architecture</b><span class="switch"></span></div>
+                        <p>MVVM, Clean Architecture, capability abstraction, state recovery.</p>
+                      </div>
+                    </div>
+                    <div class="system-card">
+                      <h3>Performance instincts</h3>
+                      <p>
+                        WorkManager sync with zero message loss, reduced recomposition, lower ANR rate, session
+                        recovery, encrypted health and conversation data.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="dock" aria-label="Skills navigation">
+                  <button type="button" data-show-screen="home"><i>HM</i>Home</button>
+                  <button type="button" data-open-project="wehear"><i>WH</i>Work</button>
+                  <button type="button" data-show-screen="about"><i>AB</i>About</button>
+                  <button type="button" data-show-screen="oss"><i>OS</i>OSS</button>
+                  <button type="button" data-show-screen="contact"><i>CH</i>Chat</button>
+                </div>
+              </section>
+
+              <section class="app-screen" data-screen="research" aria-labelledby="research-title">
+                <div class="screen-scroll">
+                  <div class="screen-title">
+                    <button class="back" type="button" data-show-screen="home" aria-label="Back to home">&lt;</button>
+                    <div>
+                      <span class="section-label">Research</span>
+                      <h2 id="research-title">Audio notching for tinnitus.</h2>
+                    </div>
+                  </div>
+                  <div class="system-card">
+                    <h3>Current exploration</h3>
+                    <p>
+                      Active research into audio signal processing techniques that may reduce tinnitus perception
+                      through notch filter therapy.
+                    </p>
+                    <div class="chips">
+                      <span class="chip">Audio DSP</span>
+                      <span class="chip">Notch filters</span>
+                      <span class="chip">Hearing research</span>
+                      <span class="chip">Mobile audio</span>
+                    </div>
+                  </div>
+                  <div class="system-card">
+                    <h3>Why it fits</h3>
+                    <p>
+                      It connects mobile UX, sound science, hardware constraints, and the kind of edge-case testing that
+                      makes a product feel calm in real life.
+                    </p>
+                  </div>
+                </div>
+                <div class="dock" aria-label="Research navigation">
+                  <button type="button" data-show-screen="home"><i>HM</i>Home</button>
+                  <button type="button" data-open-project="wehear"><i>WH</i>Work</button>
+                  <button type="button" data-show-screen="about"><i>AB</i>About</button>
+                  <button type="button" data-show-screen="oss"><i>OS</i>OSS</button>
+                  <button type="button" data-show-screen="contact"><i>CH</i>Chat</button>
+                </div>
+              </section>
+
+              <section class="app-screen" data-screen="oss" aria-labelledby="oss-title">
+                <div class="screen-scroll">
+                  <div class="screen-title">
+                    <button class="back" type="button" data-show-screen="home" aria-label="Back to home">&lt;</button>
+                    <div>
+                      <span class="section-label">Open Source</span>
+                      <h2 id="oss-title">Android ecosystem activity.</h2>
+                    </div>
+                  </div>
+                  <div class="oss-stack">
+                    <article class="pr-card">
+                      <div class="pr-top">
+                        <div class="repo">
+                          <small>GitHub PR</small>
+                          <b>detekt / detekt</b>
+                        </div>
+                        <span class="status status--approved">Approved / Open</span>
+                      </div>
+                      <h3>PR #9334: Extend `PropertyUsedBeforeDeclaration` to follow private init calls</h3>
+                      <p>Android static analysis | Kotlin rule contribution | Maintainer-approved review.</p>
+                      <a class="arrow-link" href="https://github.com/detekt/detekt/pull/9334" target="_blank" rel="noreferrer">View PR -></a>
+                    </article>
+                    <article class="pr-card">
+                      <div class="pr-top">
+                        <div class="repo">
+                          <small>GitHub PR</small>
+                          <b>android / nowinandroid</b>
+                        </div>
+                        <span class="status">Open</span>
+                      </div>
+                      <h3>PR #2120: Update architecture docs for user news resource flow</h3>
+                      <p>Google's official Android architecture sample | Documentation aligned with current code.</p>
+                      <a class="arrow-link" href="https://github.com/android/nowinandroid/pull/2120" target="_blank" rel="noreferrer">View PR -></a>
+                    </article>
+                  </div>
+                </div>
+                <div class="dock" aria-label="Open source navigation">
+                  <button type="button" data-show-screen="home"><i>HM</i>Home</button>
+                  <button type="button" data-open-project="wehear"><i>WH</i>Work</button>
+                  <button type="button" data-show-screen="about"><i>AB</i>About</button>
+                  <button type="button" class="is-active" data-show-screen="oss"><i>OS</i>OSS</button>
+                  <button type="button" data-show-screen="contact"><i>CH</i>Chat</button>
+                </div>
+              </section>
+
+              <section class="app-screen" data-screen="contact" aria-labelledby="contact-title">
+                <div class="screen-scroll">
+                  <div class="screen-title">
+                    <button class="back" type="button" data-show-screen="home" aria-label="Back to home">&lt;</button>
+                    <div>
+                      <span class="section-label">Messages</span>
+                      <h2 id="contact-title">Start a conversation.</h2>
+                    </div>
+                  </div>
+                  <div class="message-thread">
+                    <div class="message">
+                      <small>Shubham</small>
+                      <p>Always curious about mobile. Happy to talk architecture, firmware, audio, or anything in between.</p>
+                    </div>
+                    <div class="message message--me">
+                      <small>You</small>
+                      <p>Let's chat about native systems.</p>
+                    </div>
+                  </div>
+                  <div class="contact-actions">
+                    <a href="mailto:shubham.work2002@gmail.com">Email <span>shubham.work2002@gmail.com</span></a>
+                    <a href="https://www.linkedin.com/in/shubhambhatt022" target="_blank" rel="noreferrer">LinkedIn <span>/in/shubhambhatt022</span></a>
+                    <a href="https://github.com/ShubhamWorks02" target="_blank" rel="noreferrer">GitHub <span>@ShubhamWorks02</span></a>
+                    <a href="tel:+919510324299">Phone <span>+91 9510324299</span></a>
+                  </div>
+                </div>
+                <div class="dock" aria-label="Contact navigation">
+                  <button type="button" data-show-screen="home"><i>HM</i>Home</button>
+                  <button type="button" data-open-project="wehear"><i>WH</i>Work</button>
+                  <button type="button" data-show-screen="about"><i>AB</i>About</button>
+                  <button type="button" data-show-screen="oss"><i>OS</i>OSS</button>
+                  <button type="button" class="is-active" data-show-screen="contact"><i>CH</i>Chat</button>
+                </div>
+              </section>
+            </div>
+            <div class="home-indicator" aria-hidden="true"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const projects = {
+        wehear: {
+          role: "Primary showcase",
+          title: "WeHear App",
+          island: "WeHear: OTA 98.5%",
+          tags: ["Android + iOS", "BLE + OTA", "Translation", "PairHub"],
+          headline: "Wearable companion platform for device control, translation, AI notes, and hearing personalization.",
+          copy:
+            "Production-grade mobile work across Kotlin and Swift: real-time BLE control, OTA firmware updates, 100+ language live translation over WebSockets, AI summaries, adaptive EQ through GATT writes, and encrypted health and conversation data.",
+          stats: [
+            ["98.5%", "OTA success, up from roughly 65%"],
+            ["-40%", "Update completion time"],
+            ["-70%", "ANR rate reduction"],
+            ["-55%", "Device switch latency"]
+          ],
+          features: [
+            "Co-designed BLE protocols on-site in China across 5+ firmware versions.",
+            "Defined 42+ command types with firmware engineers.",
+            "Built PairHub support for up to 4 simultaneously paired wearables.",
+            "Reduced Compose recompositions by roughly 60% and improved translation accuracy from 85% to 90%."
+          ],
+          stack: ["Kotlin", "Coroutines", "Flow", "Compose", "Hilt", "Swift", "SwiftUI", "Observable", "OperationQueue"]
+        },
+        weconverse: {
+          role: "Leadership + global scale",
+          title: "WeConverse",
+          island: "WeConverse: 3,000 live users",
+          tags: ["BNI Hawaii", "100+ languages", "Team lead", "Live audio"],
+          headline: "Real-time multilingual communication for BNI Global Convention 2024.",
+          copy:
+            "In 2024, 3,000 professionals from across the globe gathered in Hawaii and needed to understand each other in real time. I led the iOS, Android, backend, and product team that delivered translated audio directly to participants' ears.",
+          stats: [
+            ["3,000+", "International participants"],
+            ["100+", "Real-time languages"],
+            ["4 teams", "iOS, Android, backend, product"],
+            ["Live", "Global deployment in Hawaii"]
+          ],
+          features: [
+            "Built low-latency audio streaming and WebSocket-based live audio delivery.",
+            "Owned fallback states, persistent session recovery, paging, caching, and encryption.",
+            "Delivered a production event platform, not a prototype.",
+            "Integrated sound processing and real-time translation under live convention pressure."
+          ],
+          stack: ["Kotlin", "Flow", "Hilt", "Room", "WorkManager", "Swift", "Combine", "SwiftData", "URLSession"]
+        },
+        nuconnect: {
+          role: "Architecture showcase",
+          title: "NuConnect",
+          island: "NuConnect: 99.2% ack reliability",
+          tags: ["Hearing aids", "Capability abstraction", "Remote fitting", "DSP"],
+          headline: "BLE hearing-aid companion platform for 5+ device families.",
+          copy:
+            "A model-driven architecture where runtime capabilities decide what each hardware family can do. The result: remote fitting, DSP channel tuning, and real-time GATT writes without platform-level rewrites for every device model.",
+          stats: [
+            ["-70%", "BLE communication latency"],
+            ["10s -> 4s", "Device pairing time"],
+            ["99.2%", "Command ack reliability"],
+            ["45m -> 15m", "Average fitting time"]
+          ],
+          features: [
+            "Config Assistant supports 16+ DSP channel tuning beyond EQ.",
+            "Remote Fitting applies cloud sound profiles through real-time GATT writes.",
+            "Dynamic support for 6+ hardware models.",
+            "Reduced audiologist visits by roughly 30% and clinic revisits by roughly 25%."
+          ],
+          stack: ["MVVM", "Hilt", "Room", "BLE GATT", "DSP tuning", "Capability models", "Swift", "Kotlin"]
+        }
+      };
+
+      const screens = [...document.querySelectorAll("[data-screen]")];
+      const island = document.querySelector("[data-island]");
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      const setIsland = (text) => {
+        island.textContent = text;
+        island.classList.add("is-expanded");
+        window.setTimeout(() => island.classList.remove("is-expanded"), prefersReducedMotion ? 1 : 1400);
+      };
+
+      const showScreen = (id, islandText) => {
+        screens.forEach((screen) => {
+          const active = screen.dataset.screen === id;
+          screen.classList.toggle("is-active", active);
+          screen.setAttribute("aria-hidden", active ? "false" : "true");
+          if (active) {
+            const scroller = screen.querySelector(".screen-scroll");
+            if (scroller) scroller.scrollTop = 0;
+          }
+        });
+        setIsland(islandText || "Mobile portfolio");
+      };
+
+      const createChip = (text) => {
+        const chip = document.createElement("span");
+        chip.className = "chip";
+        chip.textContent = text;
+        return chip;
+      };
+
+      const renderProject = (key) => {
+        const project = projects[key];
+        if (!project) return;
+
+        document.querySelector("[data-detail-role]").textContent = project.role;
+        document.querySelector("[data-detail-title]").textContent = project.title;
+        document.querySelector("[data-detail-headline]").textContent = project.headline;
+        document.querySelector("[data-detail-copy]").textContent = project.copy;
+
+        const tags = document.querySelector("[data-detail-tags]");
+        tags.replaceChildren(...project.tags.map(createChip));
+
+        const stats = document.querySelector("[data-detail-stats]");
+        stats.replaceChildren(
+          ...project.stats.map(([value, label]) => {
+            const stat = document.createElement("div");
+            stat.className = "stat";
+            stat.innerHTML = `<b>${value}</b><span>${label}</span>`;
+            return stat;
+          })
+        );
+
+        const features = document.querySelector("[data-detail-features]");
+        features.replaceChildren(
+          ...project.features.map((item) => {
+            const row = document.createElement("div");
+            row.textContent = item;
+            return row;
+          })
+        );
+
+        const stack = document.querySelector("[data-detail-stack]");
+        stack.replaceChildren(...project.stack.map(createChip));
+
+        showScreen("detail", project.island);
+      };
+
+      document.querySelectorAll("[data-show-screen]").forEach((control) => {
+        control.addEventListener("click", () => {
+          const target = control.dataset.showScreen;
+          const labels = {
+            home: "Home screen",
+            about: "Profile",
+            skills: "Control Center",
+            research: "Audio notching research",
+            oss: "Open source activity",
+            contact: "Messages"
+          };
+          showScreen(target, labels[target]);
+        });
+      });
+
+      document.querySelectorAll("[data-open-project]").forEach((control) => {
+        control.addEventListener("click", () => renderProject(control.dataset.openProject));
+      });
+
+      document.querySelectorAll("[data-rail-action='unlock']").forEach((control) => {
+        control.addEventListener("click", () => showScreen("home", "Unlocked"));
+      });
+
+      screens.forEach((screen) => {
+        screen.setAttribute("aria-hidden", screen.classList.contains("is-active") ? "false" : "true");
+      });
+
+      if (!prefersReducedMotion) {
+        const loop = ["Exploring audio notching", "detekt PR approved/open", "Native Android + iOS", "PairHub supports 4 devices"];
+        let index = 0;
+        window.setInterval(() => {
+          const active = document.querySelector(".app-screen.is-active")?.dataset.screen;
+          if (active === "lock" || active === "home") {
+            index = (index + 1) % loop.length;
+            setIsland(loop[index]);
+          }
+        }, 3600);
+      }
+    </script>
+  </body>
+</html>
